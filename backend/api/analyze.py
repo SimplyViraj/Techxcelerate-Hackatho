@@ -12,7 +12,7 @@ MODEL_NAME = "distilbert-base-uncased"  # Replacing LyEmoBERT with DistilBERT
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
 
-# Mood Labels (Customizable)
+
 MOOD_LABELS = ["Happy", "Sad", "Energetic", "Calm"]
 
 def classify_lyrics(lyrics: str) -> str:
@@ -51,7 +51,7 @@ async def analyze_audio_file(file: UploadFile = File(...)):
     """API endpoint to analyze audio file for tempo and key detection."""
     file_path = f"temp_{file.filename}"
     
-    # Save the uploaded file
+    
     with open(file_path, "wb") as f:
         f.write(file.file.read())
 
