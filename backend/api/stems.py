@@ -10,14 +10,14 @@ router = APIRouter()
 # Initialize Spleeter with 4-stem separation (vocals, drums, bass, other)
 separator = Separator("spleeter:4stems")
 
-# Function to save uploaded file temporarily
+# Saves uploaded file temporarily
 def save_temp_file(uploaded_file: UploadFile) -> str:
     temp = NamedTemporaryFile(delete=False, suffix=".mp3")
     temp.write(uploaded_file.file.read())
     temp.close()
     return temp.name
 
-# Function to perform stem separation
+# Performs stem separation
 def separate_stems(file_path: str, output_dir: str):
     os.makedirs(output_dir, exist_ok=True)
     separator.separate_to_file(file_path, output_dir)
@@ -39,7 +39,7 @@ async def separate_audio(file: UploadFile = File(...)):
         file_path = save_temp_file(file)
         output_dir = "output/stems"
 
-        # Separate stems
+       
         stems = separate_stems(file_path, output_dir)
 
         return {
