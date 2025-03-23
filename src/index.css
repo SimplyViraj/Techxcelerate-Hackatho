@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -68,13 +69,16 @@ body {
     @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
   }
 
-  /* about section */
-  .grid-container {
+  .grid-container1 {
     @apply w-full h-full rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+  }
+  
+  .grid-container {
+    @apply w-full h-full rounded-lg sm:p-7 p-4 flex flex-col gap-5 hover:shadow-[0px_0px_40px_1px_rgba(182,93,252,0.36)];
   }
 
   .grid-headtext {
-    @apply text-xl font-semibold mb-2 text-white font-generalsans;
+    @apply text-xl font-semibold mb-2 text-black font-generalsans;
   }
 
   .grid-subtext {
@@ -85,7 +89,6 @@ body {
     @apply cursor-pointer flex justify-center items-center gap-2;
   }
 
-  /* projects section  */
   .arrow-btn {
     @apply w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient;
   }
@@ -94,7 +97,6 @@ body {
     @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
   }
 
-  /* clients section */
   .client-container {
     @apply grid md:grid-cols-2 grid-cols-1 gap-5 mt-12;
   }
@@ -107,7 +109,6 @@ body {
     @apply flex lg:flex-row flex-col justify-between lg:items-center items-start gap-5 mt-7;
   }
 
-  /*  work experience section */
   .work-container {
     @apply grid lg:grid-cols-3 grid-cols-1 gap-5 mt-12;
   }
@@ -132,7 +133,6 @@ body {
     @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
   }
 
-  /* contact section */
   .contact-container {
     @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
   }
@@ -153,7 +153,6 @@ body {
     @apply w-2.5 h-2.5 object-contain invert brightness-0;
   }
 
-  /*  footer */
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
   }

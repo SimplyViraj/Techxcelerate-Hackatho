@@ -5,44 +5,30 @@ const SvgAnimation = () => {
   const svgRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 2,
-        yoyo: true,
-        ease: "power2.inOut",
-      },
-    });
+    if (!svgRef.current) return;
+
+    const tl = gsap.timeline({ defaults: { duration: 2, yoyo: true, ease: "power2.inOut" } });
 
     tl.fromTo(
       [".left", ".right"],
-      {
-        svgOrigin: "640 500",
-        skewY: (i) => [-30, 15][i],
-        scaleX: (i) => [0.6, 0.85][i],
-        x: 200,
-      },
-      {
-        skewY: (i) => [-15, 30][i],
-        scaleX: (i) => [0.85, 0.6][i],
-        x: -200,
-      }
+      { transformOrigin: "50% 50%", skewY: (i) => [-10, 5][i], scaleX: (i) => [0.9, 1][i], x: 50 },
+      { skewY: (i) => [-5, 10][i], scaleX: (i) => [1, 0.9][i], x: -50 }
     ).play(0.5);
 
-    // Timeline for individual text movement
     const tl2 = gsap.timeline();
-    const texts = svgRef.current?.querySelectorAll("text") || [];
+    const texts = svgRef.current.querySelectorAll("text");
+
     texts.forEach((t, i) => {
       tl2.add(
         gsap.fromTo(
           t,
-          { xPercent: -100, x: 700 },
-          { duration: 1, xPercent: 0, x: 575, ease: "sine.inOut" }
+          { opacity: 0, x: 100 },
+          { duration: 1, opacity: 1, x: 0, ease: "sine.inOut" }
         ),
         (i % 4) * 0.2
       );
     });
 
-    // Pointer-based animation control
     const handlePointerMove = (e) => {
       tl.pause();
       tl2.pause();
@@ -54,55 +40,47 @@ const SvgAnimation = () => {
     };
 
     window.addEventListener("pointermove", handlePointerMove);
-
-    return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
-    };
+    return () => window.removeEventListener("pointermove", handlePointerMove);
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Background Pattern */}
-      <div className="magicpattern absolute top-0 left-0 z-0"></div>
-
-      {/* SVG Animation */}
-      <div className="relative top-10 left-5 z-10">
-        <svg ref={svgRef} viewBox="0 0 1280 720" className="w- h-auto">
-          {/* Left Mask */}
+    <div className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
+      <svg
+        ref={svgRef}
+        viewBox="0 0 1280 720"
+        preserveAspectRatio="xMidYMid meet"
+        className="w-[80%] max-w-full"
+      >
+        <defs>
           <mask id="maskLeft">
-            <rect x="-50%" width="100%" height="100%" fill="#fff" />
+            <rect x="0" y="0" width="50.05%" height="100%" fill="white" />
           </mask>
-
-          {/* Right Mask */}
           <mask id="maskRight">
-            <rect x="50%" width="100%" height="100%" fill="#fff" />
+            <rect x="49.95%" y="0" width="50.05%" height="100%" fill="white" />
           </mask>
+        </defs>
 
-          {/* Text Groups */}
-          <g fontSize="150">
-            {/* Left (Black) */}
-            <g mask="url(#maskLeft)" fill="#000" className="left">
-              <text y="120">REMIX</text>
-              <text y="250">LIKE</text>
-              <text y="380">NEVER</text>
-              <text y="510">Before</text>
-            </g>
-
-            {/* Right (Gray) */}
-            <g mask="url(#maskRight)" fill="#888" className="right">
-              <text y="120">REMIX</text>
-              <text y="250">LIKE</text>
-              <text y="380">NEVER</text>
-              <text y="510">Before</text>
-            </g>
+        <g fontSize="6vw" fontWeight="bold" fontFamily="Arial]">
+          <g mask="url(#maskLeft)" fill="purple" className="left">
+            {["REMIX", "LIKE", "NEVER", "BEFORE"].map((word, i) => (
+              <text key={i} x="50%" y={`${30 + i * 20}%`} textAnchor="middle" dominantBaseline="middle">
+                {word}
+              </text>
+            ))}
           </g>
-        </svg>
-      </div>
 
-      {/* Second Background Pattern */}
-      <div className="magicpattern2 absolute bottom-0 right-60 z-0"></div>
+          <g mask="url(#maskRight)" fill="gray" className="right">
+            {["REMIX", "LIKE", "NEVER", "BEFORE"].map((word, i) => (
+              <text key={i} x="50%" y={`${30 + i * 20}%`} textAnchor="middle" dominantBaseline="middle" fill="purple">
+                {word}
+              </text>
+            ))}
+          </g>
+        </g>
+      </svg>
     </div>
   );
 };
 
 export default SvgAnimation;
+<div className="magicpattern absolute top-0 left-0 w-full h-full z-10"></div>
