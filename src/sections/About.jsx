@@ -12,7 +12,8 @@ const About = () => {
         </div>
         <div className="col-span-2 relative">
           <div className="grid-container1 relative">
-            <img src="assets\erasebg-transformed.png" alt="grid-2" className="w-full h-[276] sm:h-[700] h-fit object-contain" />
+            <img src="assets/erasebg-transformed.png" alt="grid-2" className="w-full h-[276] sm:h-[700] h-fit object-contain" />
+
               <p className="grid-headtext text-black">
                 Unleash your inner creativity with WavStudio.<span className="text-purple">Learn, Sing, and Remix </span> — powered by AI that grooves with you.
               </p>

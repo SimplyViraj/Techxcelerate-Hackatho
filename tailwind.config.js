@@ -3,6 +3,15 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      keyframes: {
+        shrinkGrow: {
+          '0%': { transform: 'scale(.9)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        shrinkGrow: 'shrinkGrow 0.3s ease-in',
+      },
       fontFamily: {
         generalsans: ['General Sans', 'sans-serif'],
       },

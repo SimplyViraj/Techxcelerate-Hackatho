@@ -49,14 +49,14 @@ const SvgAnimation = () => {
         ref={svgRef}
         viewBox="0 0 1280 720"
         preserveAspectRatio="xMidYMid meet"
-        className="w-[80%] max-w-full"
+        className="w-[100%] max-w-full"
       >
         <defs>
           <mask id="maskLeft">
             <rect x="0" y="0" width="50.05%" height="100%" fill="white" />
           </mask>
           <mask id="maskRight">
-            <rect x="49.95%" y="0" width="50.05%" height="100%" fill="white" />
+            <rect x="49.8%" y="0" width="50.05%" height="100%" fill="white" />
           </mask>
         </defs>
 

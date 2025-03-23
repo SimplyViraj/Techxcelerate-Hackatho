@@ -3,6 +3,8 @@ import Globe from 'react-globe.gl';
 
 import Button from '../components/Button.jsx';
 
+
+
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
 
@@ -16,12 +18,11 @@ const About = () => {
   };
 
   return (
-    <section className="c-space my-20" id="about">
+    <section className="c-space my-20 " id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
         <div className="col-span-1 xl:row-span-3">
-          <div className="grid-container border border-black-300 hover:inset-shadow-[0px_0px_40px_1px_rgba(182,93,252,0.36)]">
-            <img src="assets/Frame.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
-
+          <div className="grid-container border border-black-300">
+            <img src="assets/Frame.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain transition-all hover:animate-shrinkGrow" />
             <div>
               <p className="grid-headtext text">What we do in a Nutshell</p>
               <p className="grid-subtext">
@@ -33,8 +34,7 @@ const About = () => {
 
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container  border border-black-300 ">
-            <img src="assets/Frame (1).png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
-
+            <img src="assets/Frame (1).png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain transition-all hover:animate-shrinkGrow" />
             <div>
               <p className="grid-headtext">Your Beat. Your Voice.Reimagined </p>
               <p className="grid-subtext ">
@@ -48,8 +48,10 @@ const About = () => {
           <div className="grid-container  border border-black-300 ">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
               <Globe
-                height={450}
-                width={450}
+                height={365}
+                width={365}
+                
+                
                 backgroundColor="rgba(0, 0, 0, 0)"
                 backgroundImageOpacity={0.5}
                 showAtmosphere
@@ -70,13 +72,14 @@ const About = () => {
 
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container  border border-black-300 ">
-            <img src="assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
-
+           
             <div>
-              <p className="grid-headtext">My Passion for Coding</p>
+              <p className="grid-headtext">All New Duet Feature!!!</p>
               <p className="grid-subtext">
-                I love solving problems and building things through code. Programming isn&apos;t just my
-                profession—it&apos;s my passion. I enjoy exploring new technologies, and enhancing my skills.
+                	Allows users to sing alongside the original track or AI-generated vocals.
+                  Provides real-time synchronization with lyrics displayed on-screen.
+                  Users can record their duet performances and receive AI feedback.
+
               </p>
             </div>
           </div>
